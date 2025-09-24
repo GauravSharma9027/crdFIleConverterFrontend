@@ -56,7 +56,10 @@ const CDRConverter = () => {
             const res = await axios.post(
                 import.meta.env.VITE_BACKEND_URL,
                 formData,
-                { headers: { "Content-Type": "multipart/form-data" } }
+                {
+                    headers: { "Content-Type": "multipart/form-data" },
+                    withCredentials: true
+                }
             );
 
             if (res?.data?.success && res?.data?.downloadUrl) {
@@ -77,11 +80,11 @@ const CDRConverter = () => {
             <div className="max-w-5xl w-full bg-[#121826] text-white rounded-2xl shadow-xl p-6">
 
                 {/* Top stats */}
-                <PremiumFeaturesBanner/>
+                <PremiumFeaturesBanner />
                 <StatsDisplay />
 
                 {/* Steps */}
-                <ProcessStepsDisplay/>
+                <ProcessStepsDisplay />
 
                 {/* Upload area with Drag & Drop */}
                 <div
@@ -164,7 +167,7 @@ const CDRConverter = () => {
                 )}
 
                 {/* Info cards */}
-                <PremiumHighlightsDisplay/>
+                <PremiumHighlightsDisplay />
             </div>
         </div>
     );
