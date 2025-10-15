@@ -6,7 +6,7 @@ import PremiumFeaturesBanner from "../components/conversion/PremiumFeaturesBanne
 import PremiumHighlightsDisplay from "../components/conversion/PremiumHighlightsDisplay";
 import ProcessStepsDisplay from "../components/conversion/ProcessStepsDisplay";
 
-const SUPPORTED_FORMATS = ["pdf", "png", "svg", "wmf", "ps", "tiff", "jpg"];
+const SUPPORTED_FORMATS = ["pdf", "png", "svg", "ps", "tiff", "jpg"];
 
 const CDRConverter = () => {
     const [file, setFile] = useState(null);
