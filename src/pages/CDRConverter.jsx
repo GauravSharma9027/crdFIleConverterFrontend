@@ -6,11 +6,12 @@ import PremiumFeaturesBanner from "../components/conversion/PremiumFeaturesBanne
 import PremiumHighlightsDisplay from "../components/conversion/PremiumHighlightsDisplay";
 import ProcessStepsDisplay from "../components/conversion/ProcessStepsDisplay";
 
-const SUPPORTED_FORMATS = ["pdf", "eps", "png", "svg", "wmf", "ps", "tiff", "cmx", "jpg"];
+const SUPPORTED_FORMATS = ["pdf", "png", "svg", "wmf", "ps", "tiff", "jpg"];
 
 const CDRConverter = () => {
     const [file, setFile] = useState(null);
     const [format, setFormat] = useState("pdf");
+    const [accessKeyToken, setAccessKeyToken] = useState("");
     const [loading, setLoading] = useState(false);
     const [downloadUrl, setDownloadUrl] = useState(null);
     const [dragActive, setDragActive] = useState(false);
@@ -45,7 +46,9 @@ const CDRConverter = () => {
 
     const handleUploadConvert = async () => {
         if (!file) return alert("⚠️ Please select a CDR file!");
-
+        if (!SUPPORTED_FORMATS.includes(format)) return alert("⚠️ Unsupported output format!");
+        if (!accessKeyToken) return alert("⚠️ Please enter your Access Key Token!");
+        console.log("accessKeyToken", accessKeyToken);
         setLoading(true);
         setDownloadUrl(null);
 
@@ -53,6 +56,7 @@ const CDRConverter = () => {
             const formData = new FormData();
             formData.append("file", file);
             formData.append("output_format", format);
+            formData.append("access_key_token", accessKeyToken);
             const res = await axios.post(
                 import.meta.env.VITE_BACKEND_URL,
                 formData,
@@ -130,17 +134,28 @@ const CDRConverter = () => {
                 </div>
 
                 {/* Output Format */}
-                <div className="mb-6">
-                    <label className="block mb-2 text-gray-300">Output Format</label>
-                    <select
-                        value={format}
-                        onChange={(e) => setFormat(e.target.value)}
-                        className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"
-                    >
-                        {SUPPORTED_FORMATS.map((f) => (
-                            <option key={f} value={f}>{f.toUpperCase()}</option>
-                        ))}
-                    </select>
+                <div className="mb-5">
+                    <div className="mb-6 max-w-96">
+                        <label className="block mb-2 text-gray-300">Output Format</label>
+                        <select
+                            value={format}
+                            onChange={(e) => setFormat(e.target.value)}
+                            className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"
+                        >
+                            {SUPPORTED_FORMATS.map((f) => (
+                                <option key={f} value={f}>{f.toUpperCase()}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            onChange={(e) => setAccessKeyToken(e.target.value)}
+                            value={accessKeyToken}
+                            placeholder="Input Access Key Token"
+                            className="h-20 w-full px-4 bg-gray-800 rounded-lg outline-none text-left text-xs text-gray-100 placeholder-gray-500 border border-gray-700 focus:ring-2 focus:ring-blue-500 align-top"
+                        />
+                    </div>
                 </div>
 
                 {/* Convert button */}
