@@ -13,7 +13,7 @@ import CDRConverter from "./pages/CDRConverter";
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<HomePage />} />
+    <Route path="/CDRConverter" element={<HomePage />} />
     <Route path="/image-upscaler" element={<ImageUpscalerPage />} />
     <Route path="/background-remover" element={<BackgroundRemoverPage />} />
     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -22,7 +22,7 @@ const AppRoutes = () => (
     <Route path="/contact" element={<Contact />} />
     <Route path="/about" element={<AboutPage />} />
     <Route path="/conversion" element={<FileUploader />} />
-    <Route path="/CDRConverter" element={<CDRConverter />} />
+    <Route path="/" element={<CDRConverter />} />
   </Routes>
 );
 

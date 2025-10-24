@@ -68,6 +68,8 @@ const CDRConverter = () => {
 
             if (res?.data?.success && res?.data?.downloadUrl) {
                 setDownloadUrl(res?.data?.downloadUrl);
+                setFile("");
+                setFormat("");
             } else {
                 alert("❌ Conversion failed: " + (res?.data?.message || "Unknown error"));
             }
