@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Image Upscaler", href: "/image-upscaler" },
-    { name: "Background Remover", href: "/background-remover" },
-    { name: "CRD Converter", href: "/CDRConverter" }
+    // { name: "Home", href: "/" },
+    // { name: "Image Upscaler", href: "/image-upscaler" },
+    // { name: "Background Remover", href: "/background-remover" },
+    // { name: "CRD Converter", href: "/CDRConverter" }
   ];
 
   return (
