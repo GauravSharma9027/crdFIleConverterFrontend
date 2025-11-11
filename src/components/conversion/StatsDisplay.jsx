@@ -15,8 +15,8 @@ const StatCard = ({ value, label, delay }) => (
 
 const StatsDisplay = () => {
   const stats = [
-    { value: "100K+", label: "Files Converted", delay: 0.1, colorClass: "bg-blue-500/10 border-blue-500/20 text-blue-400" },
-    { value: "50K+", label: "Happy Users", delay: 0.2, colorClass: "bg-purple-500/10 border-purple-500/20 text-purple-400" },
+    { value: "500K+", label: "Files Converted", delay: 0.1, colorClass: "bg-blue-500/10 border-blue-500/20 text-blue-400" },
+    { value: "200K+", label: "Happy Users", delay: 0.2, colorClass: "bg-purple-500/10 border-purple-500/20 text-purple-400" },
     { value: "99.9%", label: "Success Rate", delay: 0.3, colorClass: "bg-green-500/10 border-green-500/20 text-green-400" },
   ];
 
